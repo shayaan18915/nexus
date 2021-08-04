@@ -25,7 +25,7 @@ pipeline {
            steps {
                 
                 sh 'docker build -t samplewebapp:latest .' 
-                sh 'docker tag samplewebapp ishaqmd/jenkins:latest'
+                sh 'docker tag samplewebapp ishaqmd/javaapp:latest'
                 //sh 'docker tag samplewebapp nikhilnidhi/samplewebapp:$BUILD_NUMBER'
                
           }
@@ -35,8 +35,8 @@ pipeline {
           
             steps {
         withDockerRegistry([ credentialsId: "DOCKER_HUB", url: "https://registry.hub.docker.com" ]) {
-          sh  'docker push ishaqmd/jenkins:latest'
-          sh  'docker push ishaqmd/jenkins:$BUILD_NUMBER'
+          sh  'docker push ishaqmd/javaapp:latest'
+          sh  'docker push ishaqmd/javaapp:$BUILD_NUMBER'
         }
                   
           }
@@ -46,7 +46,7 @@ pipeline {
              
             steps 
 			{
-                sh "docker run -d -p 8008:8080 ishaqmd/jenkins"
+                sh "docker run -d -p 8008:8080 ishaqmd/javaapp"
  
             }
         }
