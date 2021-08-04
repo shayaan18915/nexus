@@ -27,6 +27,8 @@ pipeline {
                 sh 'docker build -t samplewebapp:latest .' 
                 sh 'docker tag samplewebapp ishaqmd/javaapp:latest'
                 //sh 'docker tag samplewebapp nikhilnidhi/samplewebapp:$BUILD_NUMBER'
+		   sh "docker login -u ishaqmd -p san@12345"
+		   sh  'docker push ishaqmd/javaapp:latest'
                
           }
         }
