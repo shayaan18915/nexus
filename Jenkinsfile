@@ -55,9 +55,9 @@ pipeline {
 			{
                 sh "docker run --name javaapp -d -p 8008:8080 ishaqmd/javaapp"
 				sh 'curl localhost:8080/hello'
-				sh 'sleep 20'
-				sh 'docker stop javaapp'
-				sh 'docker rm javaapp'
+				//sh 'sleep 20'
+				//sh 'docker stop javaapp'
+				//sh 'docker rm javaapp'
  
             }
         }
