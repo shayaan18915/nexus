@@ -38,7 +38,7 @@ pipeline {
           //sh  'docker push ishaqmd/javaapp:latest'
           //sh  'docker push ishaqmd/javaapp:$BUILD_NUMBER'
 		
-		withDockerRegistry(credentialsId: 'DOCKER_HUB', url: 'https://registry.hub.docker.com/') {
+		    sh 'docker login --username=ishaqmd --password=${PASSWD}
     sh  'docker push ishaqmd/javaapp:latest'
 }
         
