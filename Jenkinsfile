@@ -34,10 +34,14 @@ pipeline {
   stage('Publish image to Docker Hub') {
           
             steps {
-        withDockerRegistry([ credentialsId: "DOCKER_HUB"]) {
-          sh  'docker push ishaqmd/javaapp:latest'
+        //withDockerRegistry([ credentialsId: "DOCKER_HUB"]) {
+          //sh  'docker push ishaqmd/javaapp:latest'
           //sh  'docker push ishaqmd/javaapp:$BUILD_NUMBER'
-        }
+		
+		withDockerRegistry(credentialsId: 'DOCKER_HUB', toolName: 'Docker', url: 'https://registry.hub.docker.com/') {
+    sh  'docker push ishaqmd/javaapp:latest'
+}
+        
                   
           }
         }
