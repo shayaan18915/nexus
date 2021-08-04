@@ -9,7 +9,7 @@ pipeline {
       stage('checkout') {
            steps {
              
-                git branch: 'master', url: 'https://github.com/ishaqmdgcp/jar01.git'
+                git branch: 'master', url: 'https://github.com/ishaqmdgcp/nexus.git'
              
           }
         }
