@@ -35,7 +35,7 @@ pipeline {
           
             steps {
         withDockerRegistry([ credentialsId: "DOCKER_HUB", url: "https://registry.hub.docker.com" ]) {
-          sh  'docker push ishaqmd/javaapp:latest'
+          //sh  'docker push ishaqmd/javaapp:latest'
           sh  'docker push ishaqmd/javaapp:$BUILD_NUMBER'
         }
                   
