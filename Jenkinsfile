@@ -38,7 +38,7 @@ pipeline {
           //sh  'docker push ishaqmd/javaapp:latest'
           //sh  'docker push ishaqmd/javaapp:$BUILD_NUMBER'
 		
-		    sh 'docker login --username=ishaqmd --password=${PASSWD}'
+		    sh 'docker login --username=ishaqmd --password=$PASSWD'
     sh  'docker push ishaqmd/javaapp:latest'
 }
         
