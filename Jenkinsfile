@@ -30,22 +30,7 @@ pipeline {
           }
         }
      
-  stage('Publish image to Docker Hub') {
-          
-            steps {
-        
-		withCredentials([string(credentialsId: 'DOCKER_USER', variable: 'DOCKER_USER'), string(credentialsId: 'PASSWD', variable: 'DOCKER_PASSWORD')]) {
-            sh 'docker login -u $DOCKER_USER -p $DOCKER_PASSWORD'
-              sh  'docker push ishaqmd/javaapp:latest'
-          }
-		  
-
-}
-        
-                  
-          
-  }
-     
+       
       stage('Run Docker') {
              
             steps 
@@ -76,5 +61,21 @@ pipeline {
                	                 
           }
         }
+	 
+	 stage('Publish image to Docker Hub') {
+          
+            steps {
+        
+		withCredentials([string(credentialsId: 'DOCKER_USER', variable: 'DOCKER_USER'), string(credentialsId: 'PASSWD', variable: 'DOCKER_PASSWORD')]) {
+            sh 'docker login -u $DOCKER_USER -p $DOCKER_PASSWORD'
+              sh  'docker push ishaqmd/javaapp:latest'
+          }
+		  
+
+}
+        
+                  
+          
+  }
     }
 	}
