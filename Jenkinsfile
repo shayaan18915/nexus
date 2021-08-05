@@ -46,19 +46,35 @@ pipeline {
           
   }
      
-      stage('Run Docker container on Jenkins Agent') {
+      stage('Run Docker') {
              
             steps 
 			{
                 sh "docker run --name javaapp -d -p 8008:8080 ishaqmd/javaapp"
 				sh 'sleep 10'
-				sh 'curl localhost:8008/health'
-				sh 'sleep 20'
-				sh 'docker stop javaapp'
-				sh 'docker rm javaapp'
+				
+				
  
             }
         }
+	 
+	 
+	 stage('Test') {
+           steps {
+                
+               sh 'curl localhost:8008/health'
+				sh 'sleep 20'
+               	                 
+          }
+        }
  
+	 stage('Delete infra') {
+           steps {
+                
+                sh 'docker stop javaapp'
+				sh 'docker rm javaapp'
+               	                 
+          }
+        }
     }
 	}
