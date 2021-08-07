@@ -66,7 +66,7 @@ pipeline {
           
             steps {
         
-		withCredentials([string(credentialsId: 'DOCKER_USER', variable: 'DOCKER_USER'), string(credentialsId: 'PASSWD', variable: 'DOCKER_PASSWORD')]) {
+		withCredentials([string(credentialsId: 'DOCKER_USER', variable: 'DOCKER_USER'), string(credentialsId: 'DOCKER_PASSWORD', variable: 'DOCKER_PASSWORD')]) {
             sh 'docker login -u $DOCKER_USER -p $DOCKER_PASSWORD'
               sh  'docker push mashahid/javaapp:latest'
           }
